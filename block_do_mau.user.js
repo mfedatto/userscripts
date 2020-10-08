@@ -34,6 +34,7 @@ new (function() {
     '//extra.',
     '//revistamonet.',
     '/esporte/futebol-muleke',
+    '//oglobo.globo.com/esportes/',
     '//tvefamosos.',
     '//ninalemos.',
     '//soltos.',
