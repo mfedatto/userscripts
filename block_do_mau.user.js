@@ -49,7 +49,8 @@ new (function() {
     '//ninalemos.',
     '//soltos.',
     '/brasil-mundial-fc/',
-    '/pop-arte/'
+    '/pop-arte/',
+    '/chico-barney/'
   ];
   
   $('a').each((iLink, eLink) => {
