@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.0.5
+// @version     1.1.0a
 // @date        2020-10-09
 // @author      Maurício Fedatto
 /*// @description Youtube Downloader: all in one script to get Vimeo, Facebook, Dailymotion videos for free*/
@@ -18,6 +18,9 @@
 // ==/UserScript==
 
 new (function() {
+  const forbiddenIframeKeywordsList = [
+    'google_ads_iframe_'
+  ];
   const forbiddenLinkKeywordsList = [
     '/futebol/',
     '/blog-do-pvc/',
@@ -63,9 +66,21 @@ new (function() {
     const href = $(eLink).attr('href');
     
     if (href !== undefined) {
-      $(forbiddenLinkKeywordsList).each((iForbiddenLinkKeyword, eForbiddenLinkKeyword) => {
-        if (href.toLowerCase().indexOf(eForbiddenLinkKeyword) > -1) {
+      $(forbiddenLinkKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
+        if (href.toLowerCase().indexOf(eForbiddenKeyword) > -1) {
           $(eLink).css('visibility', 'hidden');
+        }
+      });
+    }
+  });
+  
+  $('iframe').each((iIframe, eIframe) => {
+    const id = $(eIframe).attr('id');
+    
+    if (id !== undefined) {
+      $(forbiddenIframeKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
+        if (id.toLowerCase().indexOf(eForbiddenKeyword) > -1) {
+          $(eIframe).css('visibility', 'hidden');
         }
       });
     }
