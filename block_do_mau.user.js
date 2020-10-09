@@ -77,6 +77,8 @@ new (function() {
   $('iframe').each((iIframe, eIframe) => {
     const id = $(eIframe).attr('id');
     
+    console.log(id);
+    
     if (id !== undefined) {
       $(forbiddenIframeKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
         if (id.toLowerCase().indexOf(eForbiddenKeyword) > -1) {
