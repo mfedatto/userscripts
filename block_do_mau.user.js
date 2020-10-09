@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.4a
+// @version     1.1.5a
 // @date        2020-10-09
 // @author      Maurício Fedatto
 /*// @description Youtube Downloader: all in one script to get Vimeo, Facebook, Dailymotion videos for free*/
@@ -18,7 +18,10 @@
 // ==/UserScript==
 
 new (function() {
-  const forbiddenIframeKeywordsList = [
+  const forbiddenDivIdKeywordsList = [
+    'banner-'
+  ];
+  const forbiddenDivClassKeywordsList = [
     'banner-'
   ];
   const forbiddenLinkKeywordsList = [
@@ -76,9 +79,18 @@ new (function() {
   
   $('div').each((iDiv, eDiv) => {
     const id = $(eDiv).attr('id');
+    const cssClass = $(eDiv).attr('class');
     
     if (id !== undefined) {
-      $(forbiddenIframeKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
+      $(forbiddenDivIdKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
+        if (id.toLowerCase().indexOf(eForbiddenKeyword) == 0) {
+          $(eDiv).css('visibility', 'hidden');
+        }
+      });
+    }
+    
+    if (cssClass !== undefined) {
+      $(forbiddenDivIdKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
         if (id.toLowerCase().indexOf(eForbiddenKeyword) == 0) {
           $(eDiv).css('visibility', 'hidden');
         }
