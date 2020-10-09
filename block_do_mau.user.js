@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.0.3
+// @version     1.0.4
 // @date        2020-10-09
 // @author      Maurício Fedatto
 /*// @description Youtube Downloader: all in one script to get Vimeo, Facebook, Dailymotion videos for free*/
@@ -53,7 +53,9 @@ new (function() {
     '/chico-barney/',
     '/fefito/',
     '//play.uol.com.br/',
-    '/criador-de-sites/'
+    '/criador-de-sites/',
+    '/ooops/',
+    '/mauricio-stycer/'
   ];
   
   $('a').each((iLink, eLink) => {
