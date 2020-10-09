@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.5a
+// @version     1.1.6a
 // @date        2020-10-09
 // @author      Maurício Fedatto
 /*// @description Youtube Downloader: all in one script to get Vimeo, Facebook, Dailymotion videos for free*/
@@ -18,12 +18,6 @@
 // ==/UserScript==
 
 new (function() {
-  const forbiddenDivIdKeywordsList = [
-    'banner-'
-  ];
-  const forbiddenDivClassKeywordsList = [
-    'banner-'
-  ];
   const forbiddenLinkKeywordsList = [
     '/futebol/',
     '/blog-do-pvc/',
@@ -77,24 +71,15 @@ new (function() {
     }
   });
   
-  $('div').each((iDiv, eDiv) => {
-    const id = $(eDiv).attr('id');
-    const cssClass = $(eDiv).attr('class');
+  if (document.location.href.toLowerCase() === 'https://www.uol.com.br/') {
+    const adsSelectors = [
+      'div.full.moduloBanner.banner'
+    ];
     
-    if (id !== undefined) {
-      $(forbiddenDivIdKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
-        if (id.toLowerCase().indexOf(eForbiddenKeyword) == 0) {
-          $(eDiv).css('visibility', 'hidden');
-        }
-      });
-    }
-    
-    if (cssClass !== undefined) {
-      $(forbiddenDivIdKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
-        if (id.toLowerCase().indexOf(eForbiddenKeyword) == 0) {
-          $(eDiv).css('visibility', 'hidden');
-        }
-      });
-    }
-  });
+    $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
+      if (eAdsSelector.length > 0) {
+        $(eAdsSelector).css('visibility', 'hidden');
+      }
+    });
+  }
 })();
