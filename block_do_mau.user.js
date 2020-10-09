@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.6a
+// @version     1.1.0
 // @date        2020-10-09
 // @author      Maurício Fedatto
 /*// @description Youtube Downloader: all in one script to get Vimeo, Facebook, Dailymotion videos for free*/
@@ -73,7 +73,14 @@ new (function() {
   
   if (document.location.href.toLowerCase() === 'https://www.uol.com.br/') {
     const adsSelectors = [
-      'div.full.moduloBanner.banner'
+      'div.full.moduloBanner.banner',
+      'div.banner-1x1-hibrido-video-container.labeled.label-publicidade',
+      'div.mod-hibrido-loterias.area-default',
+      'div.mod-hibrido-dialogo.area-default.module',
+      'div.topo-hibrido-meio',
+      'div.full.moduloBanner.label-full-module',
+      'div.modulo-publicidade.moduloBanner.moduloSemBorda.modulo-300x250.labeled.label-publicidade',
+      'div.banner.banner-970x250.mod-horizontal-publicidade'
     ];
     
     $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
