@@ -85,8 +85,7 @@ new (function() {
       'div.modulo-publicidade.moduloBanner.moduloSemBorda.modulo-300x250.labeled.label-publicidade',
       'div.banner.banner-970x250.mod-horizontal-publicidade',
       'div.labeled.label-produtos',
-      'div.webalert_container.webalert_show_confirmation_message.webalert_load_onscroll',
-      'header.HU_header.webalert_parent_container'
+      'div.webalert_container.webalert_show_confirmation_message.webalert_load_onscroll'
     ];
     
     $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
