@@ -71,6 +71,9 @@ new (function() {
     '/fofocas-famosos/'
   ];
   
+  console.log('block do mau');
+  console.log('block do mau ' + document.location.href.toLowerCase().indexOf('https://www.ig.com.br/'));
+  
   $('a').each((iLink, eLink) => {
       const href = $(eLink).attr('href');
 
@@ -82,8 +85,7 @@ new (function() {
           });
       }
     });
-  console.log('block do mau');
-  console.log('block do mau ' + document.location.href.toLowerCase().indexOf('https://www.ig.com.br/'));
+  
   if (document.location.href.toLowerCase().indexOf('https://www.uol.com.br/') === 0) {
     const adsSelectors = [
       { selector: 'div.full.moduloBanner.banner', action: (selector) => $(selector).remove() },
