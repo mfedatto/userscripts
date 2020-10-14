@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.19
+// @version     1.1.20
 // @date        2020-10-14
 // @author      Maurício Fedatto
 // @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
@@ -107,7 +107,7 @@ new (function() {
   }
   
   if (document.location.href.toLowerCase().indexOf('https://www.ig.com.br/') === 0) {
-    window.setInterval(function() {
+    window.setInterval(function() {console.log('block do mau');
       const adsSelectors = [
         { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
       ];
