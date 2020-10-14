@@ -107,14 +107,16 @@ new (function() {
   }
   
   if (document.location.href.toLowerCase().indexOf('https://www.ig.com.br/') === 0) {
-    const adsSelectors = [
-      { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
-    ];
-    
-    $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
-        if ($(eAdsSelector.selector).length > 0) {
-          eAdsSelector.action(eAdsSelector.selector);
-        }
-      });
+    window.setInterval(function() {
+      const adsSelectors = [
+        { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
+      ];
+
+      $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
+          if ($(eAdsSelector.selector).length > 0) {
+            eAdsSelector.action(eAdsSelector.selector);
+          }
+        });
+      }, 1000);
   }
 })();
