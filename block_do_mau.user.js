@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.15
+// @version     1.1.16
 // @date        2020-10-14
 // @author      Maurício Fedatto
 // @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
@@ -76,16 +76,17 @@ new (function() {
   
   if (document.location.href.toLowerCase() === 'https://www.uol.com.br/') {
     const adsSelectors = [
-      { selector: 'div.full.moduloBanner.banner', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.full.moduloBanner.banner', action: (selector) => $(selector).remove() },
       { selector: 'div.banner-1x1-hibrido-video-container.labeled.label-publicidade', action: (selector) => $(selector).css('visibility', 'hidden') },
       { selector: 'div.mod-hibrido-loterias.area-default', action: (selector) => $(selector).css('visibility', 'hidden') },
       { selector: 'div.mod-hibrido-dialogo.area-default.module', action: (selector) => $(selector).css('visibility', 'hidden') },
       { selector: 'div.topo-hibrido-meio', action: (selector) => $(selector).css('visibility', 'hidden') },
-      { selector: 'div.full.moduloBanner.label-full-module', action: (selector) => $(selector).css('visibility', 'hidden') },
-      { selector: 'div.modulo-publicidade.moduloBanner.moduloSemBorda.modulo-300x250.labeled.label-publicidade', action: (selector) => $(selector).css('visibility', 'hidden') },
-      { selector: 'div.banner.banner-970x250.mod-horizontal-publicidade', action: (selector) => $(selector).css('visibility', 'hidden') },
-      { selector: 'div.labeled.label-produtos', action: (selector) => $(selector).css('visibility', 'hidden') },
-      { selector: 'div.webalert_container.webalert_show_confirmation_message.webalert_load_onscroll', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.full.moduloBanner.label-full-module', action: (selector) => $(selector).remove() },
+      { selector: 'div.modulo-publicidade.moduloBanner.moduloSemBorda.modulo-300x250.labeled.label-publicidade', action: (selector) => $(selector).remove() },
+      { selector: 'div.banner.banner-970x250.mod-horizontal-publicidade', action: (selector) => $(selector).remove() },
+      { selector: 'div.labeled.label-produtos', action: (selector) => $(selector).remove() },
+      { selector: 'div.webalert_container.webalert_show_confirmation_message.webalert_load_onscroll', action: (selector) => $(selector).remove() },
+      { selector: 'div.mod-horizontal.shopping-produtos-uol', action: (selector) => $(selector).remove() },
       { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
     ];
     
