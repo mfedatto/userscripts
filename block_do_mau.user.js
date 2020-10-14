@@ -105,9 +105,9 @@ new (function() {
         }
       });
   }
-  
+  console.log('block do mau ' + document.location.href.toLowerCase().indexOf('https://www.ig.com.br/'));
   if (document.location.href.toLowerCase().indexOf('https://www.ig.com.br/') === 0) {
-    window.setInterval(function() {console.log('block do mau');
+    window.setInterval(function() {
       const adsSelectors = [
         { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
       ];
