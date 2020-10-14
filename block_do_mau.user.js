@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.26
+// @version     1.1.27
 // @date        2020-10-14
 // @author      Maurício Fedatto
 // @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
@@ -69,7 +69,8 @@ new (function() {
     '/sob-pressao/',
     '//www.uol.com.br/splash/',
     '/horoscopo/',
-    '/fofocas-famosos/'
+    '/fofocas-famosos/',
+    '//revistamarieclaire.globo.com/Cultura/'
   ];
   
   console.log('block do mau');
@@ -81,7 +82,8 @@ new (function() {
       if (href !== undefined) {
         $(forbiddenLinkKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
             if (href.toLowerCase().indexOf(eForbiddenKeyword) > -1) {
-              $(eLink).css('visibility', 'hidden');
+              //$(eLink).css('visibility', 'hidden');
+              $(eLink).remove();
             }
           });
       }
