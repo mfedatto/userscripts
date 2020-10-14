@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.25
+// @version     1.1.26
 // @date        2020-10-14
 // @author      Maurício Fedatto
 // @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
@@ -12,12 +12,11 @@
 // @downloadURL https://github.com/mfedatto/userscripts/raw/main/block_do_mau.user.js
 // @include     https://www.globo.com/*
 // @include     https://www.uol.com.br/*
+// @include     https://www.ig.com.br/*
 // @run-at      document-end
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.2.1.min.js
 // ==/UserScript==
-
-console.log('[UserScript] Block do Mau');
 
 new (function() {
   const forbiddenLinkKeywordsList = [
@@ -112,7 +111,7 @@ new (function() {
   }
   
   if (document.location.href.toLowerCase().indexOf('https://www.ig.com.br/') === 0) {
-    window.setInterval(function() {
+    //window.setInterval(function() {
       const adsSelectors = [
         { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
       ];
@@ -122,6 +121,6 @@ new (function() {
             eAdsSelector.action(eAdsSelector.selector);
           }
         });
-      }, 1000);
+    //  }, 1000);
   }
 })();
