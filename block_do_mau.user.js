@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.24
+// @version     1.1.25
 // @date        2020-10-14
 // @author      Maurício Fedatto
 // @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
@@ -16,6 +16,8 @@
 // @grant       none
 // @require     https://code.jquery.com/jquery-3.2.1.min.js
 // ==/UserScript==
+
+console.log('[UserScript] Block do Mau');
 
 new (function() {
   const forbiddenLinkKeywordsList = [
