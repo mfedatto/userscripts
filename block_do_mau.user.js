@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.16
+// @version     1.1.17
 // @date        2020-10-14
 // @author      Maurício Fedatto
 // @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
@@ -20,6 +20,14 @@
 new (function() {
   const forbiddenLinkKeywordsList = [
     '/futebol/',
+    '//esporte.ig.com.br/futebol/',
+    '//gente.ig.com.br/celebridades/',
+    '//gente.ig.com.br/tvenovela/',
+    '/joaobidu/',
+    '//desejoluxo.ig.com.br/',
+    '//www.meiahora.com.br/celebridades-e-tv/',
+    '//www.meiahora.com.br/esportes/',
+    '//delas.ig.com.br/parceiros/joaobidu/',
     '/blog-do-pvc/',
     '/famosos/',
     '/celebridades/',
@@ -59,7 +67,8 @@ new (function() {
     '/leonardo-sakamoto/',
     '/sob-pressao/',
     '//www.uol.com.br/splash/',
-    '/horoscopo/'
+    '/horoscopo/',
+    '/fofocas-famosos/'
   ];
   
   $('a').each((iLink, eLink) => {
@@ -67,10 +76,10 @@ new (function() {
     
     if (href !== undefined) {
       $(forbiddenLinkKeywordsList).each((iForbiddenKeyword, eForbiddenKeyword) => {
-        if (href.toLowerCase().indexOf(eForbiddenKeyword) > -1) {
-          $(eLink).css('visibility', 'hidden');
-        }
-      });
+          if (href.toLowerCase().indexOf(eForbiddenKeyword) > -1) {
+            $(eLink).css('visibility', 'hidden');
+          }
+        });
     }
   });
   
@@ -91,9 +100,21 @@ new (function() {
     ];
     
     $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
-      if ($(eAdsSelector.selector).length > 0) {
-        eAdsSelector.action(eAdsSelector.selector);
-      }
-    });
+        if ($(eAdsSelector.selector).length > 0) {
+          eAdsSelector.action(eAdsSelector.selector);
+        }
+      });
+  }
+  
+  if (document.location.href.toLowerCase() === 'https://www.ig.com.br/') {
+    const adsSelectors = [
+      { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
+    ];
+    
+    $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
+        if ($(eAdsSelector.selector).length > 0) {
+          eAdsSelector.action(eAdsSelector.selector);
+        }
+      });
   }
 })();
