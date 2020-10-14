@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name        Block do Mau
 // @namespace   https://github.com/mfedatto/userscripts/block_do_mau.user.js
-// @version     1.1.14
+// @version     1.1.15
 // @date        2020-10-14
 // @author      Maurício Fedatto
-/*// @description Youtube Downloader: all in one script to get Vimeo, Facebook, Dailymotion videos for free*/
+// @description Block do Mau: script do Maurício Fedatto para bloquear conteúdo indesejado
 // @icon        https://www.iconfinder.com/icons/33774/download/png/128
 // @icon64      https://www.iconfinder.com/icons/33774/download/png/128
 // @homepage    https://github.com/mfedatto/userscripts
@@ -76,21 +76,22 @@ new (function() {
   
   if (document.location.href.toLowerCase() === 'https://www.uol.com.br/') {
     const adsSelectors = [
-      'div.full.moduloBanner.banner',
-      'div.banner-1x1-hibrido-video-container.labeled.label-publicidade',
-      'div.mod-hibrido-loterias.area-default',
-      'div.mod-hibrido-dialogo.area-default.module',
-      'div.topo-hibrido-meio',
-      'div.full.moduloBanner.label-full-module',
-      'div.modulo-publicidade.moduloBanner.moduloSemBorda.modulo-300x250.labeled.label-publicidade',
-      'div.banner.banner-970x250.mod-horizontal-publicidade',
-      'div.labeled.label-produtos',
-      'div.webalert_container.webalert_show_confirmation_message.webalert_load_onscroll'
+      { selector: 'div.full.moduloBanner.banner', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.banner-1x1-hibrido-video-container.labeled.label-publicidade', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.mod-hibrido-loterias.area-default', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.mod-hibrido-dialogo.area-default.module', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.topo-hibrido-meio', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.full.moduloBanner.label-full-module', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.modulo-publicidade.moduloBanner.moduloSemBorda.modulo-300x250.labeled.label-publicidade', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.banner.banner-970x250.mod-horizontal-publicidade', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.labeled.label-produtos', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.webalert_container.webalert_show_confirmation_message.webalert_load_onscroll', action: (selector) => $(selector).css('visibility', 'hidden') },
+      { selector: 'div.fc-ab-root', action: (selector) => { $(selector).remove(); $(document.body).css('overflow', 'auto') } }
     ];
     
     $(adsSelectors).each((iAdsSelector, eAdsSelector) => {
-      if (eAdsSelector.length > 0) {
-        $(eAdsSelector).css('visibility', 'hidden');
+      if ($(eAdsSelector.selector).length > 0) {
+        eAdsSelector.action(eAdsSelector.selector);
       }
     });
   }
